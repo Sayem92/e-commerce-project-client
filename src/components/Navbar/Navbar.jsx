@@ -3,10 +3,11 @@ import { useContext } from 'react';
 import toast from 'react-hot-toast';
 import { Link, NavLink } from 'react-router-dom';
 import logo from '../../assets/logo.png'
+import { AuthContext } from '../../Context/UserContext';
 // import { AuthContext } from '../../contexts/UserContext/UserContext';
 
 const Navbar = () => {
-//   const { user, logOut } = useContext(AuthContext)
+  const { user, logOut } = useContext(AuthContext)
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   // console.log(user);
 
