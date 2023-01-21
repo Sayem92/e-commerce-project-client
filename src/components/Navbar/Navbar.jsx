@@ -74,6 +74,20 @@ const Navbar = () => {
                   Products
                 </NavLink>
               </li>
+
+              <li>
+                <NavLink
+                  style={({ isActive }) =>
+                    isActive ? activeStyle : undefined
+                  }
+                  to="/orderList"
+                  aria-label="/orderList"
+                  title="/orderList"
+                  className="font-medium tracking-wide text-white transition-colors duration-200 hover:text-deep-purple-accent-400"
+                >
+                  cartpic
+                </NavLink>
+              </li>
               
               
              
@@ -195,6 +209,19 @@ const Navbar = () => {
                             Products
                           </NavLink>
                         </li>
+                        <li>
+                <NavLink
+                  style={({ isActive }) =>
+                    isActive ? activeStyle : undefined
+                  }
+                  to="/orderList"
+                  aria-label="/orderList"
+                  title="/orderList"
+                  className="font-medium tracking-wide text-black transition-colors duration-200 hover:text-deep-purple-accent-400"
+                >
+                  cartpic
+                </NavLink>
+              </li>
 
 
                         {user?.uid ?

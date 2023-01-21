@@ -47,7 +47,7 @@ export const router = createBrowserRouter([
                 element: <PrivateRoutes><Booking></Booking></PrivateRoutes>
             },
             {
-                path:'/cart',
+                path:'/orderList',
                 element: <OrderList></OrderList>
             }
             

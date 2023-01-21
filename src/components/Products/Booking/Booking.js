@@ -1,16 +1,18 @@
 import React from 'react';
 import { useContext } from 'react';
-import { Link, useLoaderData } from 'react-router-dom';
+import { toast } from 'react-hot-toast';
+import { Link, useLoaderData, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../Context/UserContext';
 
 const Booking = () => {
     const product = useLoaderData();
     const { name, price, img } = product;
     const { user } = useContext(AuthContext)
-    // console.log(product);
+    
+
+    const navigate = useNavigate();
 
     const handleCart = () => {
-
         const cart = {
             name,
             price,
@@ -19,8 +21,22 @@ const Booking = () => {
             email: user?.email,
         }
 
-        // console.log(cart);
-    }
+        fetch(`http://localhost:5000/order`, {
+            method: "POST",
+            headers: {
+                'content-type': "application/json"
+            },
+            body: JSON.stringify(cart)
+        })
+            .then(res => res.json())
+            .then(data => {
+                // console.log("save user", data);
+                toast.success("Successfully saved order");
+                navigate('/orderList')
+
+            })
+    };
+
 
 
     return (
@@ -33,9 +49,9 @@ const Booking = () => {
                     <p className="mb-1 text-sm font-normal  text-white">Thank You for booking the {name}.</p>
                     <p className="mb-2">Price: <strong>{price}$</strong></p>
 
-                    <Link to='/cart' onClick={handleCart} className="inline-flex items-center py-2  px-3 text-lg font-medium text-center text-white hover:bg-orange-500 rounded-lg bg-blue-600 focus:ring-4 focus:outline-none  focus:ring-blue-800">
+                    <p onClick={handleCart} className="inline-flex items-center py-2  px-3 text-lg font-medium text-center text-white hover:bg-orange-500 rounded-lg bg-blue-600 focus:ring-4 focus:outline-none  focus:ring-blue-800">
                         Confirm
-                    </Link>
+                    </p>
 
                     <Link to='/products'>
                         <button className='ml-36 border-none btn  bg-red-500 hover:bg-red-600 '>Cancel</button>
