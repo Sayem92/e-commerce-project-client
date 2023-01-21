@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { Link } from 'react-router-dom';
+import { userInfoSave } from '../../API/Users';
 import { AuthContext } from '../../Context/UserContext';
 import Loading from '../Loading/Loading';
 
@@ -28,9 +29,7 @@ const Register = () => {
                 //user update---------
                 const userInfo = {
                     displayName: data.name
-
                 }
-
                 
                 updateName(userInfo)
                     .then(() => {
@@ -77,37 +76,21 @@ const Register = () => {
 
     // google login----------------
     const handleGoogleLogin = () => {
-
         googleLogin()
             .then(result => {
                 const user = result.user;
-               
+                console.log(user);
                 // user data save --------------
-                const userInfo = {
-                    name: user.displayName,
-                    email: user.email
-                }
-                fetch(`http://localhost:5000/users`, {
-                    method: "PUT",
-                    headers: {
-                        'content-type': "application/json"
-                    },
-                    body: JSON.stringify(userInfo)
-                })
-                    .then(res => res.json())
-                    .then(data => {
-                        console.log("save user", data);
-                        toast.success('Google Login Successfully!');
-                        setLoading(false);
-        
-                    })
-
+                userInfoSave(user?.displayName, user?.email);
+                toast.success('Google Login Successfully!');
+                // navigate('/')
+                // set for user token------------- 
+                // setLoginUserEmail(user?.email);
 
 
             })
             .catch(err => console.log(err))
     }
-
 
     if (loading) {
         return <Loading></Loading>
@@ -156,7 +139,7 @@ const Register = () => {
                     </div>
 
 
-                    <input className='mt-3 btn border-none hover:bg-orange-500 bg-orange-400 text-white w-full max-w-xs' type="submit" value='Sign Up' />
+                    <input className='mt-3 btn border-none hover:bg-blue-700 bg-orange-400 text-white w-full max-w-xs' type="submit" value='Sign Up' />
 
                     <div>
                         {
@@ -169,7 +152,7 @@ const Register = () => {
                 <div className='divider py-4'>OR</div>
 
                 <button onClick={handleGoogleLogin}
-                    className='btn btn-outline w-full  hover:text-white hover:border-none hover:bg-orange-500'>CONTINUE WITH GOOGLE</button>
+                    className='btn btn-outline w-full  hover:text-white hover:border-none hover:bg-blue-700'>CONTINUE WITH GOOGLE</button>
             </div>
         </div>
 

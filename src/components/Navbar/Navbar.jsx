@@ -1,30 +1,27 @@
 import React, { useState } from 'react';
 import { useContext } from 'react';
 import toast from 'react-hot-toast';
-import { Link, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import logo from '../../assets/logo.png'
 import { AuthContext } from '../../Context/UserContext';
-// import { AuthContext } from '../../contexts/UserContext/UserContext';
+
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext)
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  // console.log(user);
 
   let activeStyle = {
     textDecoration: "underline",
   };
 
-//   const handleLogout = () => {
-//     logOut()
-//       .then(() => { })
-//       .catch(error => console.log(error))
-//     toast.success('logout successfully')
-//   }
+  const handleLogout = () => {
+    logOut()
+      .then(() => { })
+      .catch(error => console.log(error))
+    toast.success('logout successfully')
+  };
 
   
-
-
 
   return (
 
@@ -34,7 +31,6 @@ const Navbar = () => {
           <div className="relative flex items-center justify-between">
             <NavLink
               to="/"
-
               aria-label="Smart Commerce"
               title="Smart Commerce"
               className="inline-flex items-center"
@@ -61,17 +57,30 @@ const Navbar = () => {
                   Home
                 </NavLink>
               </li>
+              <li>
+                <NavLink
+                  style={({ isActive }) =>
+                    isActive ? activeStyle : undefined
+                  }
+                  to="/products"
+                  aria-label="products"
+                  title="products"
+                  className="font-medium tracking-wide text-white transition-colors duration-200 hover:text-deep-purple-accent-400"
+                >
+                  Products
+                </NavLink>
+              </li>
               
               
              
 
 
 
-              {/* {user?.uid ? */}
+              {user?.uid ?
               
                   <li>
                     <button
-                    //   onClick={handleLogout}
+                      onClick={handleLogout}
                       className="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white hover:bg-orange-500 bg-orange-400 dark:bg-black dark:border transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
                       aria-label="Logout"
                       title="Logout"
@@ -80,7 +89,7 @@ const Navbar = () => {
                     </button>
                   </li>
 
-
+                  :
            
                 <li>
                   <NavLink
@@ -93,7 +102,7 @@ const Navbar = () => {
                   </NavLink>
                 </li>
 
-              {/* } */}
+            }
 
             </ul>
             <div className="lg:hidden">
@@ -169,13 +178,26 @@ const Navbar = () => {
                             Home
                           </NavLink>
                         </li>
+                        <li>
+                          <NavLink
+                            style={({ isActive }) =>
+                              isActive ? activeStyle : undefined
+                            }
+                            to="/products"
+                            aria-label="products"
+                            title="products"
+                            className="font-medium tracking-wide text-black transition-colors duration-200 hover:text-deep-purple-accent-400"
+                          >
+                            Products
+                          </NavLink>
+                        </li>
 
 
-                        {/* {user?.uid ? */}
+                        {user?.uid ?
                           <>
                             <li>
                               <button
-                                // onClick={handleLogout}
+                                onClick={handleLogout}
                                 className="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-black  bg-orange-400  transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
                                 aria-label="Logout"
                                 title="Logout"
@@ -197,7 +219,7 @@ const Navbar = () => {
                               Login
                             </NavLink>
                           </li>
-                        {/* } */}
+                     }
 
                       </ul>
                     </nav>
