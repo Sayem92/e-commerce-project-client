@@ -4,6 +4,7 @@ import toast from 'react-hot-toast';
 import { NavLink, useNavigate } from 'react-router-dom';
 import logo from '../../assets/logo.png'
 import { AuthContext } from '../../Context/UserContext';
+import { BsCartCheck } from 'react-icons/bs';
 
 
 const Navbar = () => {
@@ -18,14 +19,14 @@ const Navbar = () => {
 
   const handleLogout = () => {
     logOut()
-      .then(() => { 
+      .then(() => {
         navigate('/')
       })
       .catch(error => console.log(error))
     toast.success('logout successfully')
   };
 
-  
+
 
   return (
 
@@ -41,7 +42,7 @@ const Navbar = () => {
             >
               <img src={logo} className='w-16 rounded' alt="" />
 
-              <span className="ml-2 text-xl font-bold tracking-wide text-white uppercase">
+              <span className="ml-2 text-xl font-bold tracking-wide hover:text-orange-500 text-white uppercase">
                 Smart Commerce
               </span>
             </NavLink>
@@ -56,7 +57,7 @@ const Navbar = () => {
                   to="/home"
                   aria-label="home"
                   title="Home"
-                  className="font-medium tracking-wide text-white transition-colors duration-200 hover:text-deep-purple-accent-400"
+                  className="font-medium tracking-wide hover:text-orange-500 text-white transition-colors duration-200 hover:text-deep-purple-accent-400"
                 >
                   Home
                 </NavLink>
@@ -69,7 +70,7 @@ const Navbar = () => {
                   to="/products"
                   aria-label="products"
                   title="products"
-                  className="font-medium tracking-wide text-white transition-colors duration-200 hover:text-deep-purple-accent-400"
+                  className="font-medium tracking-wide hover:text-orange-500 text-white transition-colors duration-200 hover:text-deep-purple-accent-400"
                 >
                   Products
                 </NavLink>
@@ -81,34 +82,34 @@ const Navbar = () => {
                     isActive ? activeStyle : undefined
                   }
                   to="/orderList"
-                  aria-label="/orderList"
-                  title="/orderList"
+                  aria-label="orderList"
+                  title="orders"
                   className="font-medium tracking-wide text-white transition-colors duration-200 hover:text-deep-purple-accent-400"
                 >
-                  cartpic
+                  <BsCartCheck className='w-8 h-8 hover:text-orange-500'></BsCartCheck>
                 </NavLink>
               </li>
-              
-              
-             
+
+
+
 
 
 
               {user?.uid ?
-              
-                  <li>
-                    <button
-                      onClick={handleLogout}
-                      className="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white hover:bg-orange-500 bg-orange-400 dark:bg-black dark:border transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
-                      aria-label="Logout"
-                      title="Logout"
-                    >
-                      Logout
-                    </button>
-                  </li>
 
-                  :
-           
+                <li>
+                  <button
+                    onClick={handleLogout}
+                    className="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white hover:bg-orange-500 bg-orange-400 dark:bg-black dark:border transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
+                    aria-label="Logout"
+                    title="Logout"
+                  >
+                    Logout
+                  </button>
+                </li>
+
+                :
+
                 <li>
                   <NavLink
                     to="/login"
@@ -120,7 +121,7 @@ const Navbar = () => {
                   </NavLink>
                 </li>
 
-            }
+              }
 
             </ul>
             <div className="lg:hidden">
@@ -156,7 +157,7 @@ const Navbar = () => {
                           title="Smart Commerce"
                           className="inline-flex items-center"
                         >
-                         <img src={logo} className='w-16 rounded' alt="" />
+                          <img src={logo} className='w-16 rounded' alt="" />
 
                           <span className="ml-2 text-xl font-bold tracking-wide text-gray-800 uppercase">
                             Smart Commerce
@@ -210,18 +211,19 @@ const Navbar = () => {
                           </NavLink>
                         </li>
                         <li>
-                <NavLink
-                  style={({ isActive }) =>
-                    isActive ? activeStyle : undefined
-                  }
-                  to="/orderList"
-                  aria-label="/orderList"
-                  title="/orderList"
-                  className="font-medium tracking-wide text-black transition-colors duration-200 hover:text-deep-purple-accent-400"
-                >
-                  cartpic
-                </NavLink>
-              </li>
+                          <NavLink
+                            style={({ isActive }) =>
+                              isActive ? activeStyle : undefined
+                            }
+                            to="/orderList"
+                            aria-label="orderList"
+                            title="orders"
+                            className="font-medium tracking-wide text-black transition-colors duration-200 hover:text-deep-purple-accent-400"
+                          >
+
+                            <BsCartCheck className='w-8 h-8'></BsCartCheck>
+                          </NavLink>
+                        </li>
 
 
                         {user?.uid ?
@@ -250,7 +252,7 @@ const Navbar = () => {
                               Login
                             </NavLink>
                           </li>
-                     }
+                        }
 
                       </ul>
                     </nav>
