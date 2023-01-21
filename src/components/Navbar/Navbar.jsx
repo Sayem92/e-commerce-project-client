@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useContext } from 'react';
 import toast from 'react-hot-toast';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import logo from '../../assets/logo.png'
 import { AuthContext } from '../../Context/UserContext';
 
@@ -10,13 +10,17 @@ const Navbar = () => {
   const { user, logOut } = useContext(AuthContext)
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  const navigate = useNavigate()
+
   let activeStyle = {
     textDecoration: "underline",
   };
 
   const handleLogout = () => {
     logOut()
-      .then(() => { })
+      .then(() => { 
+        navigate('/')
+      })
       .catch(error => console.log(error))
     toast.success('logout successfully')
   };

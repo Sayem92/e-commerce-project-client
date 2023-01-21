@@ -17,9 +17,9 @@ const Login = () => {
     // const [token] = UseToken(loginUserEmail);
 
 
-    // const location = useLocation();
-    // const from = location?.state?.from?.pathname || '/';
-    // const navigate = useNavigate();
+    const location = useLocation();
+    const from = location?.state?.from?.pathname || '/';
+    const navigate = useNavigate();
 
 
     // if (token) {
@@ -39,7 +39,7 @@ const Login = () => {
             
                 // set for user token------------- 
                 // setLoginUserEmail(data.email);
-
+                navigate(from, { replace: true })
 
             })
             .catch(err => {
@@ -60,10 +60,11 @@ const Login = () => {
                 // user data save --------------
                 userInfoSave(user?.displayName, user?.email);
                 toast.success('Google Login Successfully!');
-                // navigate('/')
+             
                 // set for user token------------- 
                 // setLoginUserEmail(user?.email);
-
+                
+                navigate(from, { replace: true })
 
             })
             .catch(err => console.log(err))
