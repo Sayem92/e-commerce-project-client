@@ -68,7 +68,7 @@ const Navbar = () => {
 
 
               {/* {user?.uid ? */}
-                <>
+              
                   <li>
                     <button
                     //   onClick={handleLogout}
@@ -81,10 +81,7 @@ const Navbar = () => {
                   </li>
 
 
-                </>
-
-
-                :
+           
                 <li>
                   <NavLink
                     to="/login"
