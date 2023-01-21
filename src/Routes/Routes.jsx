@@ -3,6 +3,7 @@ import ErrorPage from "../components/ErrorPage/ErrorPage";
 import Login from "../components/Form/Login";
 import Register from "../components/Form/Register";
 import Home from "../components/Home/Home";
+import Details from "../components/Products/Details";
 import Products from "../components/Products/Products";
 import Main from "../Layout/Main";
 
@@ -31,6 +32,11 @@ export const router = createBrowserRouter([
             {
                 path: '/products',
                 element: <Products></Products>
+            },
+            {
+                path: '/details/:id',
+                loader: ({ params }) => fetch(`http://localhost:5000/details/${params.id}`),
+                element: <Details></Details>
             },
             
 
