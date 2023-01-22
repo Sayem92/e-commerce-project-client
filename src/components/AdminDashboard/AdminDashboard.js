@@ -15,7 +15,9 @@ const AdminDashboard = () => {
                 <button className="btn btn-active btn-ghost  w-full mb-3">Product List</button>
                 </Link>
 
-                <button className="btn btn-active bg-orange-500 border-none hover:bg-orange-600 w-full mb-3">Order List</button>
+               <Link to='/adminAllOrder'>
+               <button className="btn btn-active bg-orange-500 border-none hover:bg-orange-600 w-full mb-3">Order List</button>
+               </Link>
 
 
             </div>

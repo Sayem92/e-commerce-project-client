@@ -61,9 +61,9 @@ const AddProduct = () => {
 
 
     return (
-        <div className='w-96 mx-auto my-12'>
+        <div className='md:w-96 mx-auto my-12'>
             <h2 className="text-3xl text-center text-orange-500 font-semibold ml-8 mb-4">Add A Product</h2>
-            <div className='md:w-96 p-7 shadow-xl mx-2'>
+            <div className='p-7 rounded-lg shadow-xl mx-2'>
                 <form onSubmit={handleSubmit(handleAddDoctor)}>
                     <div className="form-control w-full max-w-x">
                         <label className="label"> <span className="label-text ">Name</span>

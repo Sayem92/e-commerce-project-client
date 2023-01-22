@@ -1,4 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
+import AdminAllOrder from "../components/AdminDashboard/AdminAllOrder/AdminAllOrder";
 import AdminDashboard from "../components/AdminDashboard/AdminDashboard";
 import CustomerList from "../components/AdminDashboard/CustomerList/CustomerList";
 import AddProduct from "../components/AdminDashboard/CustomerList/ProductList/AddProduct";
@@ -69,6 +70,10 @@ export const router = createBrowserRouter([
             {
                 path:'/addProduct',
                 element: <AddProduct></AddProduct>
+            },
+            {
+                path:'/adminAllOrder',
+                element: <AdminAllOrder></AdminAllOrder>
             },
 
             
