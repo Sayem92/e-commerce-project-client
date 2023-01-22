@@ -24,6 +24,7 @@ const Navbar = () => {
   const handleLogout = () => {
     logOut()
       .then(() => {
+        localStorage.removeItem('commerceToken')
         navigate('/')
       })
       .catch(error => console.log(error))
@@ -81,7 +82,7 @@ const Navbar = () => {
               </li>
 
               {
-                isAdmin && <li>
+                isAdmin && user?.uid && <li>
                   <NavLink
                     style={({ isActive }) =>
                       isActive ? activeStyle : undefined
@@ -232,7 +233,7 @@ const Navbar = () => {
                         </li>
 
                         {
-                          isAdmin && <li>
+                          isAdmin && user?.uid && <li>
                             <NavLink
                               style={({ isActive }) =>
                                 isActive ? activeStyle : undefined

@@ -1,7 +1,22 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../Context/UserContext';
 
 const ErrorPage = () => {
+    const { logOut } = useContext(AuthContext)
+    const navigate = useNavigate();
+
+    
+    const handleLogout = () => {
+        logOut()
+            .then(() => {
+                localStorage.removeItem('commerceToken')
+                navigate('/')
+            })
+            .then(err => console.log(err))
+    };
+
+
     return (
         <div>
             <section className="flex items-center h-full p-16 bg-yellow-200 text-gray-100">
@@ -15,9 +30,10 @@ const ErrorPage = () => {
 		</svg>
                         <p className="text-2xl font-semibold md:text-3xl text-red-500">Sorry, we couldn't find this page.</p>
                         <p className="mt-4 mb-8 text-gray-600">But don't worry, you can find plenty of other things on our homepage.</p>
-                        <Link to='/'>
-                        <button rel="noopener noreferrer"  className="px-2 lg:px-8 py-3 font-semibold rounded bg-violet-400 text-white">Back to homepage</button>
-                        </Link>
+                        
+                        <button onClick={handleLogout}
+                        rel="noopener noreferrer"  className="px-2 lg:px-8 py-3 font-semibold rounded bg-violet-400 text-white">Back to homepage</button>
+                       
                     </div>
                 </div>
             </section>

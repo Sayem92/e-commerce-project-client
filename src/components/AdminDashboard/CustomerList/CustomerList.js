@@ -12,7 +12,11 @@ const CustomerList = () => {
         queryFn: async () => {
             try {
 
-                const res = await fetch(`http://localhost:5000/users`)
+                const res = await fetch(`http://localhost:5000/users`, {
+                    headers: {
+                        authorization: `bearer ${localStorage.getItem('commerceToken')}`
+                    }
+                })
                 const data = await res.json();
                 return data;
 
@@ -66,12 +70,12 @@ const CustomerList = () => {
 
             <div className='flex justify-center mt-10'>
                 <label htmlFor="add-customer-modal"
-                onClick={()=>setModal('open')}
+                    onClick={() => setModal('open')}
                     className="self-start px-10 py-3 text-lg font-medium rounded text-white hover:bg-orange-500 border-none bg-blue-600">Add Customer</label>
             </div>
 
             {
-               modal === 'open' &&<AddCustomerModal refetch={refetch}  setModal={setModal}></AddCustomerModal>
+                modal === 'open' && <AddCustomerModal refetch={refetch} setModal={setModal}></AddCustomerModal>
             }
         </div >
     );

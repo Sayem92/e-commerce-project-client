@@ -4,6 +4,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useForm } from "react-hook-form";
 import { AuthContext } from '../../Context/UserContext';
 import { userInfoSave } from '../../API/Users';
+import { UseToken } from '../../API/UseToken';
 
 
 const Login = () => {
@@ -14,7 +15,7 @@ const Login = () => {
     // const navigate = useNavigate();
 
     const [loginUserEmail, setLoginUserEmail] = useState('');
-    // const [token] = UseToken(loginUserEmail);
+    const [token] = UseToken(loginUserEmail);
 
 
     const location = useLocation();
@@ -22,9 +23,9 @@ const Login = () => {
     const navigate = useNavigate();
 
 
-    // if (token) {
-    //     navigate(from, { replace: true })
-    // }
+    if (token) {
+        navigate(from, { replace: true })
+    }
 
 
 
@@ -38,7 +39,7 @@ const Login = () => {
                 toast.success('Login Successfully!');
             
                 // set for user token------------- 
-                // setLoginUserEmail(data.email);
+                setLoginUserEmail(data.email);
                 navigate(from, { replace: true })
 
             })
@@ -62,10 +63,8 @@ const Login = () => {
                 toast.success('Google Login Successfully!');
              
                 // set for user token------------- 
-                // setLoginUserEmail(user?.email);
-                
-                navigate(from, { replace: true })
-
+                setLoginUserEmail(user?.email);
+               
             })
             .catch(err => console.log(err))
     }

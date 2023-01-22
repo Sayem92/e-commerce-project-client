@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { Link, useNavigate } from 'react-router-dom';
 import { userInfoSave } from '../../API/Users';
+import { UseToken } from '../../API/UseToken';
 import { AuthContext } from '../../Context/UserContext';
 import Loading from '../Loading/Loading';
 
@@ -13,7 +14,14 @@ const Register = () => {
     const { createUser, updateName, googleLogin, loading, setLoading } = useContext(AuthContext);
     const [signUpError, setSignUpError] = useState('');
 
+    
+    const [createUserEmail, setCreateUserEmail] = useState('');
+    const [token] = UseToken(createUserEmail);
+
     const navigate = useNavigate();
+    if (token) {
+        navigate('/');
+    }
 
     // user signup---------
     const handleSignUp = data => {
@@ -66,7 +74,9 @@ const Register = () => {
                 console.log("save user", data);
                 toast.success('Save user data!');
                 setLoading(false);
-                navigate('/products')
+
+                // set for token-----
+                setCreateUserEmail(email);
 
             })
 
@@ -85,9 +95,8 @@ const Register = () => {
                 toast.success('Google Login Successfully!');
                 
                 // set for user token------------- 
-                // setLoginUserEmail(user?.email);
+                setCreateUserEmail(user?.email); 
 
-                navigate('/products')
 
 
             })

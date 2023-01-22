@@ -9,7 +9,11 @@ const ProductList = () => {
 
     useEffect(() => {
         setLoading(true)
-        axios.get('http://localhost:5000/products')
+        axios.get('http://localhost:5000/adminAllProduct', {
+            headers: {
+                authorization: `bearer ${localStorage.getItem('commerceToken')}`
+            }
+        })
             .then(data => {
                 setAllProducts(data.data)
                 setLoading(false)
@@ -19,7 +23,7 @@ const ProductList = () => {
     if (loading) {
         return <Loading></Loading>
     }
-   
+
     if (!allProducts?.length) {
         return <div className=' flex justify-center items-center my-52'>
             <h1 className='text-3xl font-bold text-blue-600'>No Product Available!
@@ -48,7 +52,7 @@ const ProductList = () => {
                                 <th>{i + 1}</th>
                                 <td>{pro.name}</td>
                                 <td>
-                                <img src={pro.img} className='w-16 h-16' alt="" />
+                                    <img src={pro.img} className='w-16 h-16' alt="" />
                                 </td>
                                 <td>{pro.price} $</td>
 
@@ -61,7 +65,7 @@ const ProductList = () => {
 
             <div className='flex justify-center mt-10'>
                 <Link to='/dashboard/addProduct'>
-                <button className="self-start px-10 py-3 text-lg font-medium rounded text-white hover:bg-orange-500 border-none bg-blue-600">Add Product</button>
+                    <button className="self-start px-10 py-3 text-lg font-medium rounded text-white hover:bg-orange-500 border-none bg-blue-600">Add Product</button>
                 </Link>
             </div>
         </div >

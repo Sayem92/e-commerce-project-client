@@ -8,7 +8,11 @@ const AdminAllOrder = () => {
 
     useEffect(() => {
         setLoading(true)
-        axios.get('http://localhost:5000/adminAllOrder')
+        axios.get('http://localhost:5000/adminAllOrder', {
+            headers: {
+                authorization: `bearer ${localStorage.getItem('commerceToken')}`
+            }
+        })
             .then(data => {
                 setAllProducts(data.data)
                 setLoading(false)
