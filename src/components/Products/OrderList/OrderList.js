@@ -13,7 +13,7 @@ const OrderList = () => {
         queryFn: async () => {
             try {
 
-                const res = await fetch(`http://localhost:5000/AllOrders/${user?.email}`)
+                const res = await fetch(`https://e-commerce-project-server.vercel.app/AllOrders/${user?.email}`)
                 const data = await res.json();
                 return data;
 

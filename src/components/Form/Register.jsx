@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { Link, useNavigate } from 'react-router-dom';
@@ -15,7 +15,7 @@ const Register = () => {
     const [signUpError, setSignUpError] = useState('');
 
     const navigate = useNavigate();
-    
+
     const [createUserEmail, setCreateUserEmail] = useState('');
     const [token] = UseToken(createUserEmail);
 
@@ -64,7 +64,7 @@ const Register = () => {
             email
         }
 
-        fetch(`http://localhost:5000/users`, {
+        fetch(`https://e-commerce-project-server.vercel.app/users`, {
             method: "PUT",
             headers: {
                 'content-type': "application/json"
@@ -95,9 +95,9 @@ const Register = () => {
                 // user data save --------------
                 userInfoSave(user?.displayName, user?.email);
                 toast.success('Google Login Successfully!');
-                
+
                 // set for user token------------- 
-                setCreateUserEmail(user?.email); 
+                setCreateUserEmail(user?.email);
 
 
             })

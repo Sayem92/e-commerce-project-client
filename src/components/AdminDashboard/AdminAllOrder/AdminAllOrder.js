@@ -8,7 +8,7 @@ const AdminAllOrder = () => {
 
     useEffect(() => {
         setLoading(true)
-        axios.get('http://localhost:5000/adminAllOrder', {
+        axios.get('https://e-commerce-project-server.vercel.app/adminAllOrder', {
             headers: {
                 authorization: `bearer ${localStorage.getItem('commerceToken')}`
             }
@@ -22,7 +22,7 @@ const AdminAllOrder = () => {
     if (loading) {
         return <Loading></Loading>
     }
-   
+
     if (!allProducts?.length) {
         return <div className=' flex justify-center items-center my-52'>
             <h1 className='text-3xl font-bold text-blue-600'>No Order Products Available!
@@ -51,7 +51,7 @@ const AdminAllOrder = () => {
                                 <th>{i + 1}</th>
                                 <td>{pro.name}</td>
                                 <td>
-                                <img src={pro.img} className='w-16 h-16' alt="" />
+                                    <img src={pro.img} className='w-16 h-16' alt="" />
                                 </td>
                                 <td>{pro.price} $</td>
 

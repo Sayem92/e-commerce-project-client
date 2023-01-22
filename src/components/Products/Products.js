@@ -11,7 +11,7 @@ const Products = () => {
 
     useEffect(() => {
         setLoading(true)
-        axios.get('http://localhost:5000/products')
+        axios.get('https://e-commerce-project-server.vercel.app/products')
             .then(data => {
                 setAllProducts(data.data)
                 setLoading(false)
@@ -24,11 +24,11 @@ const Products = () => {
 
     return (
         <div className='px-2 my-10 container mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5'>
-           
-           {
-            allProducts.map(pro=><ProductCard key={pro._id}
-                pro={pro}></ProductCard>)
-           }
+
+            {
+                allProducts.map(pro => <ProductCard key={pro._id}
+                    pro={pro}></ProductCard>)
+            }
         </div>
     );
 };

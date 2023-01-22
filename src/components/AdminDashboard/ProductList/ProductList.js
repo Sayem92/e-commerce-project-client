@@ -9,7 +9,7 @@ const ProductList = () => {
 
     useEffect(() => {
         setLoading(true)
-        axios.get('http://localhost:5000/adminAllProduct', {
+        axios.get('https://e-commerce-project-server.vercel.app/adminAllProduct', {
             headers: {
                 authorization: `bearer ${localStorage.getItem('commerceToken')}`
             }

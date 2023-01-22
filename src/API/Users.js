@@ -6,7 +6,7 @@ export const userInfoSave = (name, email) => {
         email
     }
 
-    fetch(`http://localhost:5000/users`, {
+    fetch(`https://e-commerce-project-server.vercel.app/users`, {
         method: "PUT",
         headers: {
             'content-type': "application/json"

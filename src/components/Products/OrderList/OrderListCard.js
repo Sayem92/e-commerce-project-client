@@ -5,21 +5,21 @@ const OrderListCard = ({ pro, refetch }) => {
     const { name, price, img, _id } = pro;
 
     const handleOrderDelete = id => {
-        
+
         const agree = window.confirm('Are you sure you want to delete this!')
-        
-        if(agree){
-            fetch(`http://localhost:5000/order/${id}`, {
+
+        if (agree) {
+            fetch(`https://e-commerce-project-server.vercel.app/order/${id}`, {
                 method: "DELETE",
-               
+
             })
                 .then(res => res.json())
                 .then(data => {
                     // console.log("save user", data);
                     toast.success("Successfully delete order");
                     refetch();
-                    
-    
+
+
                 })
         }
 

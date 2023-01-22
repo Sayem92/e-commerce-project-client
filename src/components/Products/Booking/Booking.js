@@ -8,7 +8,7 @@ const Booking = () => {
     const product = useLoaderData();
     const { name, price, img } = product;
     const { user } = useContext(AuthContext)
-    
+
 
     const navigate = useNavigate();
 
@@ -21,7 +21,7 @@ const Booking = () => {
             email: user?.email,
         }
 
-        fetch(`http://localhost:5000/order`, {
+        fetch(`https://e-commerce-project-server.vercel.app/order`, {
             method: "POST",
             headers: {
                 'content-type': "application/json"

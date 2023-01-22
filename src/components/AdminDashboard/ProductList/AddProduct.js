@@ -12,7 +12,7 @@ const AddProduct = () => {
     const navigate = useNavigate();
 
     const handleAddDoctor = data => {
-       
+
         setLoading(true)
         const image = data.image[0]
         const formData = new FormData();
@@ -34,7 +34,7 @@ const AddProduct = () => {
                     }
 
                     // sava information to the database----------
-                    fetch(`http://localhost:5000/addProduct`, {
+                    fetch(`https://e-commerce-project-server.vercel.app/addProduct`, {
                         method: "POST",
                         headers: {
                             'content-type': "application/json"

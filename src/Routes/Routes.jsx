@@ -43,46 +43,46 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/details/:id',
-                loader: ({ params }) => fetch(`http://localhost:5000/details/${params.id}`),
+                loader: ({ params }) => fetch(`https://e-commerce-project-server.vercel.app/details/${params.id}`),
                 element: <Details></Details>
             },
             {
                 path: '/addToBooking/:id',
-                loader: ({ params }) => fetch(`http://localhost:5000/addToBooking/${params.id}`),
+                loader: ({ params }) => fetch(`https://e-commerce-project-server.vercel.app/addToBooking/${params.id}`),
                 element: <PrivateRoutes><Booking></Booking></PrivateRoutes>
             },
             {
-                path:'/orderList',
+                path: '/orderList',
                 element: <OrderList></OrderList>
             },
             {
-                path:'/dashboard',
+                path: '/dashboard',
                 element: <AdminDashboard></AdminDashboard>
             },
             {
-                path:'/dashboard/customerList',
+                path: '/dashboard/customerList',
                 element: <CustomerList></CustomerList>
             },
             {
-                path:'/dashboard/productList',
+                path: '/dashboard/productList',
                 element: <ProductList></ProductList>
             },
             {
-                path:'/dashboard/addProduct',
+                path: '/dashboard/addProduct',
                 element: <AddProduct></AddProduct>
             },
             {
-                path:'/dashboard/adminAllOrder',
+                path: '/dashboard/adminAllOrder',
                 element: <AdminAllOrder></AdminAllOrder>
             },
 
-            
 
-           
 
-           
-            
-           
+
+
+
+
+
         ]
     }
 ])

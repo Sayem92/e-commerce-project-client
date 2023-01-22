@@ -33,7 +33,7 @@ const Login = () => {
 
                 // set for user token------------- 
                 if (user?.email) {
-                    fetch(`http://localhost:5000/jwt?email=${user?.email}`)
+                    fetch(`https://e-commerce-project-server.vercel.app/jwt?email=${user?.email}`)
                         .then(res => res.json())
                         .then(data => {
                             console.log("get token");
@@ -70,7 +70,7 @@ const Login = () => {
 
                 // set for user token------------- 
                 if (user?.email) {
-                    fetch(`http://localhost:5000/jwt?email=${user?.email}`)
+                    fetch(`https://e-commerce-project-server.vercel.app/jwt?email=${user?.email}`)
                         .then(res => res.json())
                         .then(data => {
                             console.log("get token");
