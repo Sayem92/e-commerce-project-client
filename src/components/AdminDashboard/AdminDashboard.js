@@ -10,11 +10,10 @@ const AdminDashboard = () => {
                     <button className="btn btn-active bg-orange-500 border-none hover:bg-orange-600  w-full mb-3">Customer List</button>
                 </Link>
 
-                <button className="btn btn-active btn-ghost w-full mb-3">Add Customer</button>
 
-                <button className="btn btn-active bg-orange-500 border-none hover:bg-orange-600 w-full mb-3">Product List</button>
-
-                <button className="btn btn-active btn-ghost w-full mb-3">Add Product</button>
+                <Link to='/productList'>
+                <button className="btn btn-active btn-ghost  w-full mb-3">Product List</button>
+                </Link>
 
                 <button className="btn btn-active bg-orange-500 border-none hover:bg-orange-600 w-full mb-3">Order List</button>
 
