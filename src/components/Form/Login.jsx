@@ -51,6 +51,7 @@ const Login = () => {
             .catch(err => {
                 console.log(err.message)
                 setLoginError(err.message)
+                setLoading(false);
             })
 
     };
@@ -109,8 +110,8 @@ const Login = () => {
         <div className='h-[800px] flex justify-center items-center '>
             <div className='w-96 p-7 shadow-xl mx-2'>
                 <h2 className='text-4xl py-4 text-center text-blue-600 font-bold'>Login</h2>
-                <p><small>Email:</small> <strong className='ml-2 md:ml-16'> waliur@gmail.com</strong></p>
-                <p><small>Password:</small> <strong className='ml-10'> sayemA1!</strong></p>
+                <p><small>Admin Email:</small> <strong className='ml-2 md:ml-6'> majarul@gmail.com</strong></p>
+                <p><small>Password:</small> <strong className='ml-7 md:ml-10'> sayemA1!</strong></p>
                 <form onSubmit={handleSubmit(handleLogin)}>
 
                     <div className="form-control w-full max-w-x">
