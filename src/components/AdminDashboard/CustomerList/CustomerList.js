@@ -1,10 +1,13 @@
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
+import { useState } from 'react';
 import Loading from '../../Loading/Loading';
+import AddCustomerModal from './AddCustomerModal';
 
 const CustomerList = () => {
+    const [modal, setModal] = useState(null);
 
-    const { data: customer = [], isLoading } = useQuery({
+    const { data: customer = [], isLoading, refetch } = useQuery({
         queryKey: ['user'],
         queryFn: async () => {
             try {
@@ -18,7 +21,9 @@ const CustomerList = () => {
                 console.log(err);
             }
         }
-    })
+    });
+
+
 
     if (isLoading) {
         return <Loading></Loading>
@@ -30,7 +35,7 @@ const CustomerList = () => {
             </h1>
         </div>
     };
-    
+
 
     return (
         <div className='p-2 lg:mx-16 mb-16'>
@@ -60,9 +65,14 @@ const CustomerList = () => {
             </div>
 
             <div className='flex justify-center mt-10'>
-                <button className="self-start px-10 py-3 text-lg font-medium rounded text-white hover:bg-orange-500 border-none bg-blue-600">Add Customer</button>
+                <label htmlFor="add-customer-modal"
+                onClick={()=>setModal('open')}
+                    className="self-start px-10 py-3 text-lg font-medium rounded text-white hover:bg-orange-500 border-none bg-blue-600">Add Customer</label>
             </div>
 
+            {
+               modal === 'open' &&<AddCustomerModal refetch={refetch}  setModal={setModal}></AddCustomerModal>
+            }
         </div >
     );
 };
