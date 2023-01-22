@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
-import Loading from '../../../Loading/Loading';
+import Loading from '../../Loading/Loading';
 
 const AddProduct = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
@@ -46,7 +46,7 @@ const AddProduct = () => {
                             // console.log(result);
                             toast.success(`${data.name} info save successful`);
                             setLoading(false)
-                            navigate('/productList');
+                            navigate('/dashboard/productList');
                         })
                 }
             })

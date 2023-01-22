@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { Link, useNavigate } from 'react-router-dom';
@@ -14,12 +14,14 @@ const Register = () => {
     const { createUser, updateName, googleLogin, loading, setLoading } = useContext(AuthContext);
     const [signUpError, setSignUpError] = useState('');
 
+    const navigate = useNavigate();
     
     const [createUserEmail, setCreateUserEmail] = useState('');
     const [token] = UseToken(createUserEmail);
 
-    const navigate = useNavigate();
+
     if (token) {
+        setLoading(false)
         navigate('/');
     }
 
@@ -73,7 +75,6 @@ const Register = () => {
             .then(data => {
                 console.log("save user", data);
                 toast.success('Save user data!');
-                setLoading(false);
 
                 // set for token-----
                 setCreateUserEmail(email);
@@ -86,6 +87,7 @@ const Register = () => {
 
     // google login----------------
     const handleGoogleLogin = () => {
+        setLoading(true)
         googleLogin()
             .then(result => {
                 const user = result.user;
@@ -96,7 +98,6 @@ const Register = () => {
                 
                 // set for user token------------- 
                 setCreateUserEmail(user?.email); 
-
 
 
             })

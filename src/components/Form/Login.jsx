@@ -4,7 +4,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useForm } from "react-hook-form";
 import { AuthContext } from '../../Context/UserContext';
 import { userInfoSave } from '../../API/Users';
-import { UseToken } from '../../API/UseToken';
+import Loading from '../Loading/Loading';
 
 
 const Login = () => {
@@ -12,10 +12,8 @@ const Login = () => {
     const { signIn, googleLogin, forgetPassword } = useContext(AuthContext);
     const [loginError, setLoginError] = useState('');
     const [email, setEmail] = useState(null);
-    // const navigate = useNavigate();
 
-    const [loginUserEmail, setLoginUserEmail] = useState('');
-    const [token] = UseToken(loginUserEmail);
+    const [loading, setLoading] = useState(false);
 
 
     const location = useLocation();
@@ -23,24 +21,31 @@ const Login = () => {
     const navigate = useNavigate();
 
 
-    if (token) {
-        navigate(from, { replace: true })
-    }
-
-
-
     // user login-------------------
     const handleLogin = data => {
+        setLoading(true);
         setLoginError('');
         signIn(data.email, data.password)
             .then(Result => {
                 const user = Result.user;
                 console.log(user);
                 toast.success('Login Successfully!');
-            
+
                 // set for user token------------- 
-                setLoginUserEmail(data.email);
-                navigate(from, { replace: true })
+                if (user?.email) {
+                    fetch(`http://localhost:5000/jwt?email=${user?.email}`)
+                        .then(res => res.json())
+                        .then(data => {
+                            console.log("get token");
+                            if (data.accessToken) {
+                                localStorage.setItem('commerceToken', data.accessToken)
+                                setLoading(false)
+                                navigate(from, { replace: true })
+                            }
+                        })
+                }
+
+
 
             })
             .catch(err => {
@@ -54,6 +59,7 @@ const Login = () => {
 
     // google login----------------
     const handleGoogleLogin = () => {
+        setLoading(true);
         googleLogin()
             .then(result => {
                 const user = result.user;
@@ -61,10 +67,22 @@ const Login = () => {
                 // user data save --------------
                 userInfoSave(user?.displayName, user?.email);
                 toast.success('Google Login Successfully!');
-             
+
                 // set for user token------------- 
-                setLoginUserEmail(user?.email);
-               
+                if (user?.email) {
+                    fetch(`http://localhost:5000/jwt?email=${user?.email}`)
+                        .then(res => res.json())
+                        .then(data => {
+                            console.log("get token");
+                            if (data.accessToken) {
+                                localStorage.setItem('commerceToken', data.accessToken)
+                                setLoading(false)
+                                navigate(from, { replace: true })
+                            }
+                        })
+                }
+
+
             })
             .catch(err => console.log(err))
     }
@@ -83,7 +101,9 @@ const Login = () => {
     };
 
 
-
+    if (loading) {
+        return <Loading></Loading>
+    }
 
     return (
         <div className='h-[800px] flex justify-center items-center '>
@@ -126,7 +146,7 @@ const Login = () => {
                         </label>
                     </div>
 
-                    <input className='mt-3 btn border-none hover:bg-blue-700  bg-orange-400 text-white w-full max-w-xs' type="submit" value='Sign Up' />
+                    <input className='mt-3 btn border-none hover:bg-blue-700  bg-orange-400 text-white w-full max-w-xs' type="submit" value='LogIn' />
                     <div>
                         {
                             loginError && <p className='text-red-600'>{loginError}</p>
