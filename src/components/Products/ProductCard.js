@@ -5,6 +5,8 @@ const ProductCard = ({ pro }) => {
     const { name, img, price, body, _id } = pro;
     const shortBody = body.slice(0, 80)
 
+    // product card
+
     return (
         <div className="card card-compact md:w-80 lg:w-96 mb-4 mx-auto bg-base-100 shadow-xl">
             <figure><img src={img} alt="Shoes" /></figure>

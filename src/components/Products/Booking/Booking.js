@@ -7,10 +7,10 @@ import { AuthContext } from '../../../Context/UserContext';
 const Booking = () => {
     const product = useLoaderData();
     const { name, price, img } = product;
-    const { user } = useContext(AuthContext)
-
-
+    const { user } = useContext(AuthContext);
     const navigate = useNavigate();
+
+    // everyone products bookings component
 
     const handleCart = () => {
         const cart = {

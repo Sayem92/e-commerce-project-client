@@ -4,10 +4,11 @@ import Loading from '../Loading/Loading';
 import ProductCard from './ProductCard';
 
 
-
 const Products = () => {
     const [allProducts, setAllProducts] = useState([]);
     const [loading, setLoading] = useState(false);
+
+    // load all products, see everybody
 
     useEffect(() => {
         setLoading(true)

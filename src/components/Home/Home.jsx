@@ -3,6 +3,9 @@ import { Link } from 'react-router-dom';
 
 
 const Home = () => {
+
+    // banner for displaying  first page
+    
     return (
         <div>
             <div className="hero min-h-screen" style={{ backgroundImage: `url("https://images.pexels.com/photos/3944405/pexels-photo-3944405.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1")` }}>

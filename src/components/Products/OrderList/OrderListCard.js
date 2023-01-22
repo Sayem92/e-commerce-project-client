@@ -4,6 +4,10 @@ import { toast } from 'react-hot-toast';
 const OrderListCard = ({ pro, refetch }) => {
     const { name, price, img, _id } = pro;
 
+    // order list cards component
+
+
+    // delete order functionality
     const handleOrderDelete = id => {
 
         const agree = window.confirm('Are you sure you want to delete this!')

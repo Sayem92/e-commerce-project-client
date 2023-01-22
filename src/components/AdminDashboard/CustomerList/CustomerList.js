@@ -7,6 +7,8 @@ import AddCustomerModal from './AddCustomerModal';
 const CustomerList = () => {
     const [modal, setModal] = useState(null);
 
+    // only admin see customer list 
+
     const { data: customer = [], isLoading, refetch } = useQuery({
         queryKey: ['user'],
         queryFn: async () => {

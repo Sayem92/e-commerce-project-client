@@ -4,6 +4,7 @@ import { Link, useLoaderData } from 'react-router-dom';
 const Details = () => {
     const product = useLoaderData();
 
+    // see all details of product
 
     return (
         <section className="p-2 my-10 text-gray-900">

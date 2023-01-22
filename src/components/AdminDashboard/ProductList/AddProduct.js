@@ -8,11 +8,11 @@ const AddProduct = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const [loading, setLoading] = useState(false);
     const imageHostKey = process.env.REACT_APP_imgbb_key;
-
     const navigate = useNavigate();
 
-    const handleAddDoctor = data => {
+    // only admin add products 
 
+    const handleAddDoctor = data => {
         setLoading(true)
         const image = data.image[0]
         const formData = new FormData();

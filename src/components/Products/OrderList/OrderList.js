@@ -8,6 +8,8 @@ import OrderListCard from './OrderListCard';
 const OrderList = () => {
     const { user } = useContext(AuthContext);
 
+    // OrderList see everybody filter by email address
+
     const { data: orders = [], isLoading, refetch } = useQuery({
         queryKey: ['user'],
         queryFn: async () => {

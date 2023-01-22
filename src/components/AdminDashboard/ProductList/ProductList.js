@@ -7,6 +7,8 @@ const ProductList = () => {
     const [allProducts, setAllProducts] = useState([]);
     const [loading, setLoading] = useState(false);
 
+    // only see the admin all products
+
     useEffect(() => {
         setLoading(true)
         axios.get('https://e-commerce-project-server.vercel.app/adminAllProduct', {

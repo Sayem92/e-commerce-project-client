@@ -3,6 +3,7 @@ import { toast } from 'react-hot-toast';
 
 const AddCustomerModal = ({ refetch, setModal }) => {
 
+    // only admin add customer  
 
     const handleBooking = e => {
         e.preventDefault()
@@ -15,7 +16,6 @@ const AddCustomerModal = ({ refetch, setModal }) => {
             name,
             email: emailLowercase
         }
-
 
         fetch(`https://e-commerce-project-server.vercel.app/users`, {
             method: "PUT",

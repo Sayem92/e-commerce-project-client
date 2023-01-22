@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 
 const AdminDashboard = () => {
 
+    // only show the admin dashboard 
+    
     return (
         <div className='md:w-96 mx-auto p-2 px-5 my-10'>
             <div className=''>
