@@ -15,6 +15,7 @@ const Navbar = () => {
 
   let activeStyle = {
     textDecoration: "underline",
+    color: 'orange'
   };
 
   const handleLogout = () => {
