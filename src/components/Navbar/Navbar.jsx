@@ -5,11 +5,14 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import logo from '../../assets/logo.png'
 import { AuthContext } from '../../Context/UserContext';
 import { BsCartCheck } from 'react-icons/bs';
+import UseAdmin from '../../API/UseAdmin';
 
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext)
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isAdmin] = UseAdmin(user?.email);
+  console.log(isAdmin);
 
   const navigate = useNavigate()
 
@@ -74,6 +77,20 @@ const Navbar = () => {
                   className="font-medium tracking-wide hover:text-orange-500 text-white transition-colors duration-200 hover:text-deep-purple-accent-400"
                 >
                   Products
+                </NavLink>
+              </li>
+
+              <li>
+                <NavLink
+                  style={({ isActive }) =>
+                    isActive ? activeStyle : undefined
+                  }
+                  to="/dashboard"
+                  aria-label="dashboard"
+                  title="dashboard"
+                  className="font-medium tracking-wide hover:text-orange-500 text-white transition-colors duration-200 hover:text-deep-purple-accent-400"
+                >
+                  Dashboard
                 </NavLink>
               </li>
 
@@ -209,6 +226,19 @@ const Navbar = () => {
                             className="font-medium tracking-wide text-black transition-colors duration-200 hover:text-deep-purple-accent-400"
                           >
                             Products
+                          </NavLink>
+                        </li>
+                        <li>
+                          <NavLink
+                            style={({ isActive }) =>
+                              isActive ? activeStyle : undefined
+                            }
+                            to="/dashboard"
+                            aria-label="dashboard"
+                            title="dashboard"
+                            className="font-medium tracking-wide text-black transition-colors duration-200 hover:text-deep-purple-accent-400"
+                          >
+                           Dashboard
                           </NavLink>
                         </li>
                         <li>

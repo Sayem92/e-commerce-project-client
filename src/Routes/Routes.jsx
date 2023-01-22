@@ -1,4 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
+import AdminDashboard from "../components/AdminDashboard/AdminDashboard";
+import CustomerList from "../components/AdminDashboard/CustomerList/CustomerList";
 import ErrorPage from "../components/ErrorPage/ErrorPage";
 import Login from "../components/Form/Login";
 import Register from "../components/Form/Register";
@@ -49,7 +51,16 @@ export const router = createBrowserRouter([
             {
                 path:'/orderList',
                 element: <OrderList></OrderList>
-            }
+            },
+            {
+                path:'/dashboard',
+                element: <AdminDashboard></AdminDashboard>
+            },
+            {
+                path:'/customerList',
+                element: <CustomerList></CustomerList>
+            },
+
             
 
            

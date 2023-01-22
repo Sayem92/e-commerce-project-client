@@ -34,7 +34,7 @@ const OrderListCard = ({ pro, refetch }) => {
             </div>
             <div className="card-body">
                 <h2 className="card-title">{name}</h2>
-                <p className='text-xl'>Price: <strong>{price}$</strong></p>
+                <p className='text-xl mt-2 '>Price: <strong className='text-blue-600'>{price}$</strong></p>
                 <div className="card-actions justify-end">
                     <button onClick={() => handleOrderDelete(_id)}
                         className=' border-none btn  bg-red-500 hover:bg-red-600 '>Delete</button>
