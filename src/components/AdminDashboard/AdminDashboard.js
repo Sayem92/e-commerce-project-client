@@ -6,16 +6,16 @@ const AdminDashboard = () => {
     return (
         <div className='md:w-96 mx-auto p-2 px-5 my-10'>
             <div className=''>
-                <Link to='/customerList'>
+                <Link to='/dashboard/customerList'>
                     <button className="btn btn-active bg-orange-500 border-none hover:bg-orange-600  w-full mb-3">Customer List</button>
                 </Link>
 
 
-                <Link to='/productList'>
+                <Link to='/dashboard/productList'>
                 <button className="btn btn-active btn-ghost  w-full mb-3">Product List</button>
                 </Link>
 
-               <Link to='/adminAllOrder'>
+               <Link to='/dashboard/adminAllOrder'>
                <button className="btn btn-active bg-orange-500 border-none hover:bg-orange-600 w-full mb-3">Order List</button>
                </Link>
 

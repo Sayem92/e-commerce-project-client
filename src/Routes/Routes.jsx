@@ -60,19 +60,19 @@ export const router = createBrowserRouter([
                 element: <AdminDashboard></AdminDashboard>
             },
             {
-                path:'/customerList',
+                path:'/dashboard/customerList',
                 element: <CustomerList></CustomerList>
             },
             {
-                path:'/productList',
+                path:'/dashboard/productList',
                 element: <ProductList></ProductList>
             },
             {
-                path:'/addProduct',
+                path:'/dashboard/addProduct',
                 element: <AddProduct></AddProduct>
             },
             {
-                path:'/adminAllOrder',
+                path:'/dashboard/adminAllOrder',
                 element: <AdminAllOrder></AdminAllOrder>
             },
 

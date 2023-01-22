@@ -12,7 +12,7 @@ const Navbar = () => {
   const { user, logOut } = useContext(AuthContext)
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isAdmin] = UseAdmin(user?.email);
-  console.log(isAdmin);
+  // console.log(isAdmin);
 
   const navigate = useNavigate()
 

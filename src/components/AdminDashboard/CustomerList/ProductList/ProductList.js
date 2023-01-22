@@ -60,7 +60,7 @@ const ProductList = () => {
             </div>
 
             <div className='flex justify-center mt-10'>
-                <Link to='/addProduct'>
+                <Link to='/dashboard/addProduct'>
                 <button className="self-start px-10 py-3 text-lg font-medium rounded text-white hover:bg-orange-500 border-none bg-blue-600">Add Product</button>
                 </Link>
             </div>
