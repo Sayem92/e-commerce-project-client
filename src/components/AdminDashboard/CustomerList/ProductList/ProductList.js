@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import Loading from '../../../Loading/Loading';
 
 const ProductList = () => {
@@ -49,7 +50,7 @@ const ProductList = () => {
                                 <td>
                                 <img src={pro.img} className='w-16 h-16' alt="" />
                                 </td>
-                                <td>{pro.price}</td>
+                                <td>{pro.price} $</td>
 
                             </tr>)
                         }
@@ -59,7 +60,9 @@ const ProductList = () => {
             </div>
 
             <div className='flex justify-center mt-10'>
-                <label className="self-start px-10 py-3 text-lg font-medium rounded text-white hover:bg-orange-500 border-none bg-blue-600">Add Product</label>
+                <Link to='/addProduct'>
+                <button className="self-start px-10 py-3 text-lg font-medium rounded text-white hover:bg-orange-500 border-none bg-blue-600">Add Product</button>
+                </Link>
             </div>
         </div >
     );
