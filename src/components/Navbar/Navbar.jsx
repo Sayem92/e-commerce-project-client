@@ -80,19 +80,21 @@ const Navbar = () => {
                 </NavLink>
               </li>
 
-              <li>
-                <NavLink
-                  style={({ isActive }) =>
-                    isActive ? activeStyle : undefined
-                  }
-                  to="/dashboard"
-                  aria-label="dashboard"
-                  title="dashboard"
-                  className="font-medium tracking-wide hover:text-orange-500 text-white transition-colors duration-200 hover:text-deep-purple-accent-400"
-                >
-                  Dashboard
-                </NavLink>
-              </li>
+              {
+                isAdmin && <li>
+                  <NavLink
+                    style={({ isActive }) =>
+                      isActive ? activeStyle : undefined
+                    }
+                    to="/dashboard"
+                    aria-label="dashboard"
+                    title="dashboard"
+                    className="font-medium tracking-wide hover:text-orange-500 text-white transition-colors duration-200 hover:text-deep-purple-accent-400"
+                  >
+                    Dashboard
+                  </NavLink>
+                </li>
+              }
 
               <li>
                 <NavLink
@@ -228,19 +230,23 @@ const Navbar = () => {
                             Products
                           </NavLink>
                         </li>
-                        <li>
-                          <NavLink
-                            style={({ isActive }) =>
-                              isActive ? activeStyle : undefined
-                            }
-                            to="/dashboard"
-                            aria-label="dashboard"
-                            title="dashboard"
-                            className="font-medium tracking-wide text-black transition-colors duration-200 hover:text-deep-purple-accent-400"
-                          >
-                           Dashboard
-                          </NavLink>
-                        </li>
+
+                        {
+                          isAdmin && <li>
+                            <NavLink
+                              style={({ isActive }) =>
+                                isActive ? activeStyle : undefined
+                              }
+                              to="/dashboard"
+                              aria-label="dashboard"
+                              title="dashboard"
+                              className="font-medium tracking-wide text-black transition-colors duration-200 hover:text-deep-purple-accent-400"
+                            >
+                              Dashboard
+                            </NavLink>
+                          </li>
+                        }
+                        
                         <li>
                           <NavLink
                             style={({ isActive }) =>
